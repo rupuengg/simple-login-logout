@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import { PrivateLogin } from '../PrivateLogin';
-import Login from '../Login';
+import { PrivateLogin } from '../PrivateLogin/PrivateLogin';
+import Login from '../Login/Login';
+import Navbar from '../Common/Navbar';
 
 function Home() {
   return (<h1>Home</h1>);
@@ -16,11 +17,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">AboutUs</Link></li>
-        </ul>
+        <Navbar />
         <div>
           <Route exact path="/login" component={Login}></Route>
           <PrivateLogin exact path="/" component={Home}></PrivateLogin>

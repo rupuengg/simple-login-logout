@@ -1,10 +1,18 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { authentication } from '../../Actions/Auth';
+import { login } from '../../Actions/Auth';
+import { userLogin } from '../../Services/UserService';
 
 const Login = (props) => {
   const loginHandle = () => {
-    props.login();
+    userLogin('asb@xyz.com', 'password')
+      .then(res => {
+        props.login(res);
+        props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (
@@ -15,10 +23,4 @@ const Login = (props) => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    login: status => dispatch(authentication(status))
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, { login })(Login);
