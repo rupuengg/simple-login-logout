@@ -4,6 +4,7 @@ import './App.css';
 import { PrivateLogin } from '../PrivateLogin/PrivateLogin';
 import Login from '../Login/Login';
 import Navbar from '../Common/Navbar';
+import Input from '../CheckHOC/Input';
 
 class Home extends React.Component {
   state = {
@@ -47,7 +48,21 @@ class Home extends React.Component {
 }
 
 function About() {
-  return (<h1>About</h1>);
+  return (
+    <div>
+      <h1>About</h1>
+      <ul>
+        <li>
+          <label>Firstname</label>
+          <Input name="Firstname" />
+        </li>
+        <li>
+          <label>Lastname</label>
+          <Input name="Firstname" />
+        </li>
+      </ul>
+    </div>
+  );
 }
 
 function App() {
